@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070912">
+    <title>NEURA // AI Image Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <aside class="sidebar">
+            <a href="#" class="brand">
+                <span class="brand-mark">N<span>✦</span></span>
+                <span>NEURA<small>VISION SYSTEMS</small></span>
+            </a>
+
+            <div class="side-label">MAIN INTERFACE</div>
+            <button class="nav-link active" data-view="analyzer">
+                <span>◈</span> Image Intelligence <i>01</i>
+            </button>
+            <button class="nav-link" data-view="history">
+                <span>◷</span> Scan History <i>02</i>
+            </button>
+
+            <div class="side-label">SYSTEM STATUS</div>
+            <div class="system-card">
+                <div class="system-line">
+                    <span class="pulse"></span>
+                    <span>INTERFACE ONLINE</span>
+                </div>
+                <div class="system-divider"></div>
+                <div class="system-info">
+                    <span>COMPUTER VISION</span>
+                    <strong>READY</strong>
+                </div>
+                <div class="system-info">
+                    <span>IMAGE ENGINE</span>
+                    <strong>ACTIVE</strong>
+                </div>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="neural-art">
+                    <div class="neural-orbit orbit-one"></div>
+                    <div class="neural-orbit orbit-two"></div>
+                    <div class="neural-core">✳</div>
+                </div>
+                <p>SEE BEYOND THE PIXELS.</p>
+                <small>AI-powered image intelligence</small>
+                <div class="user-line">
+                    <div class="user-avatar">R</div>
+                    <div><strong>Rupesh</strong><small>Developer workspace</small></div>
+                    <span class="user-status"></span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="mobile-brand">N <span>NEURA</span></div>
+                <div class="top-path">NEURAL NETWORK <span>/</span> <b id="breadcrumb">IMAGE INTELLIGENCE</b></div>
+                <div class="top-right">
+                    <span class="live-indicator"></span>
+                    <span class="live-label">SYSTEM ONLINE</span>
+                    <button id="themeBtn" class="theme-btn" title="Switch theme">◐</button>
+                </div>
+            </header>
+
+            <section id="analyzerView">
+                <section class="hero">
+                    <div class="hero-copy">
+                        <div class="eyebrow"><span class="eyebrow-line"></span> NEXT-GEN COMPUTER VISION</div>
+                        <h1>SEE THE WORLD<br>IN <span>NEW DIMENSIONS.</span></h1>
+                        <p>Upload. Analyze. Discover. Turn ordinary images into intelligent insights with AI-powered
+                            vision.</p>
+                        <div class="hero-tags">
+                            <span>◈ PIXEL ANALYSIS</span>
+                            <span>✳ AI VISION</span>
+                            <span>⌁ RGB ENGINE</span>
+                        </div>
+                    </div>
+                    <div class="hero-visual" aria-hidden="true">
+                        <div class="hero-ring ring-a"></div>
+                        <div class="hero-ring ring-b"></div>
+                        <div class="hero-ring ring-c"></div>
+                        <div class="hero-orb"><span>✳</span></div>
+                        <div class="orb-label label-top">VISION CORE <b>01</b></div>
+                        <div class="orb-label label-bottom">NEURAL PROCESSING</div>
+                        <div class="orb-cross">+</div>
+                    </div>
+                    <div class="hero-index">N° 001 <span>VISION LAB</span></div>
+                </section>
+
+                <div class="section-heading">
+                    <div><span class="section-code">01 / INPUT</span>
+                        <h2>Image <span>acquisition</span></h2>
+                    </div>
+                    <span class="section-note">SUPPORTED: JPG / PNG / WEBP</span>
+                </div>
+
+                <section class="main-grid">
+                    <div class="panel upload-panel">
+                        <div class="panel-top">
+                            <span class="panel-number">MODULE 01</span>
+                            <span class="panel-status">INPUT READY</span>
+                        </div>
+
+                        <label id="dropZone" class="drop-zone" for="fileInput">
+                            <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
+                            <div class="upload-symbol">
+                                <span>↑</span><i></i>
+                            </div>
+                            <h3>INITIALIZE IMAGE</h3>
+                            <p>Drag your visual data here<br>or <b>browse local files</b></p>
+                            <div class="format-row"><span>JPG</span><span>PNG</span><span>WEBP</span><span>MAX 10
+                                    MB</span></div>
+                        </label>
+
+                        <div id="fileDetails" class="file-details hidden">
+                            <img id="thumbnail" alt="Selected image thumbnail">
+                            <div class="file-meta"><strong id="fileName">image.jpg</strong><small id="fileMeta">Image
+                                    file</small><span>● IMAGE LOADED</span></div>
+                            <button id="removeBtn" class="remove-btn" title="Remove image">×</button>
+                        </div>
+
+                        <button id="analyzeBtn" class="primary-btn" disabled>
+                            <span>✳</span> INITIATE AI SCAN <b>↗</b>
+                        </button>
+                        <p class="security-note">⌑ IMAGE UPLOAD READY <span>•</span> MAXIMUM 10 MB</p>
+                        <p id="uploadError" class="error-text" role="alert"></p>
+                    </div>
+
+                    <div class="panel preview-panel">
+                        <div class="panel-top">
+                            <span class="panel-number">MODULE 02</span>
+                            <span id="previewBadge" class="panel-status">AWAITING INPUT</span>
+                        </div>
+
+                        <div id="previewCanvas" class="preview-canvas">
+                            <div class="corner corner-tl"></div>
+                            <div class="corner corner-tr"></div>
+                            <div class="corner corner-bl"></div>
+                            <div class="corner corner-br"></div>
+                            <div class="scanline"></div>
+                            <div id="emptyPreview" class="empty-preview">
+                                <div class="target-icon">◎</div>
+                                <strong>VISUAL FEED OFFLINE</strong>
+                                <p>Awaiting image transmission...</p>
+                            </div>
+                            <img id="previewImage" class="preview-image hidden" alt="Selected image preview">
+                            <div id="previewOverlay" class="preview-overlay hidden">LIVE IMAGE FEED <span>●</span></div>
+                        </div>
+
+                        <div class="preview-data">
+                            <div><small>RESOLUTION</small><strong id="previewDimensions">— × —</strong></div>
+                            <div><small>COLOR SPACE</small><strong id="previewColorMode">—</strong></div>
+                            <div><small>DATA SIZE</small><strong id="previewSize">—</strong></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="section-heading lower-heading">
+                    <div><span class="section-code">02 / TELEMETRY</span>
+                        <h2>Pixel <span>intelligence</span></h2>
+                    </div>
+                    <span class="section-note">LIVE IMAGE METRICS</span>
+                </div>
+
+                <section class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">IMAGE WIDTH <span>↔</span></div>
+                        <div id="widthValue" class="metric-value">—<small> PX</small></div>
+                        <div class="metric-foot"><span></span> HORIZONTAL RESOLUTION</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">IMAGE HEIGHT <span>↕</span></div>
+                        <div id="heightValue" class="metric-value">—<small> PX</small></div>
+                        <div class="metric-foot"><span></span> VERTICAL RESOLUTION</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">RGB CHANNELS <span>◉</span></div>
+                        <div id="channelsValue" class="metric-value">—<small> CH</small></div>
+                        <div class="metric-foot"><span></span> COLOR DATA STREAMS</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">MEAN INTENSITY <span>⌁</span></div>
+                        <div id="averageValue" class="metric-value">—</div>
+                        <div class="metric-foot"><span></span> PIXEL BRIGHTNESS</div>
+                    </div>
+                </section>
+
+                <div class="section-heading lower-heading">
+                    <div><span class="section-code">03 / COLOR SPECTRUM</span>
+                        <h2>RGB <span>diagnostics</span></h2>
+                    </div>
+                    <span class="section-note">CHANNEL RANGE: 0—255</span>
+                </div>
+
+                <section class="panel rgb-panel">
+                    <div class="rgb-top">
+                        <div>
+                            <h3>CHROMATIC DISTRIBUTION</h3>
+                            <p>Average intensity across the three color channels.</p>
+                        </div>
+                        <div id="colorSwatch" class="color-swatch"></div>
+                    </div>
+                    <div class="rgb-row">
+                        <div class="rgb-label"><span class="rgb-dot red"></span>RED CHANNEL <b id="redValue">— / 255</b>
+                        </div>
+                        <div class="rgb-track">
+                            <div id="redBar" class="rgb-fill red-fill"></div>
+                        </div>
+                    </div>
+                    <div class="rgb-row">
+                        <div class="rgb-label"><span class="rgb-dot green"></span>GREEN CHANNEL <b id="greenValue">— /
+                                255</b></div>
+                        <div class="rgb-track">
+                            <div id="greenBar" class="rgb-fill green-fill"></div>
+                        </div>
+                    </div>
+                    <div class="rgb-row">
+                        <div class="rgb-label"><span class="rgb-dot blue"></span>BLUE CHANNEL <b id="blueValue">— /
+                                255</b></div>
+                        <div class="rgb-track">
+                            <div id="blueBar" class="rgb-fill blue-fill"></div>
+                        </div>
+                    </div>
+                    <div class="rgb-footer"><span>AVERAGE RGB COLOR</span><strong id="rgbHex">#------</strong><span
+                            class="rgb-foot-right">SAMPLED PIXELS <b id="sampleCount">—</b></span></div>
+                </section>
+
+                <div class="section-heading lower-heading">
+                    <div><span class="section-code">04 / NEURAL OUTPUT</span>
+                        <h2>AI <span>interpretation</span></h2>
+                    </div>
+                    <span class="section-note">VISION ENGINE</span>
+                </div>
+
+                <section class="panel ai-panel">
+                    <div class="ai-top">
+                        <div class="ai-icon">✳</div>
+                        <div>
+                            <h3>NEURA VISION ENGINE</h3>
+                            <p id="aiStatus">Awaiting image analysis request...</p>
+                        </div>
+                        <span class="engine-badge"><span></span> AI ENGINE</span>
+                    </div>
+
+                    <div id="aiEmpty" class="ai-empty">
+                        <div class="ai-emblem">✧</div>
+                        <h3>AWAITING NEURAL INPUT</h3>
+                        <p>Initialize an AI scan to reveal the objects, colors and meaning within your image.</p>
+                    </div>
+
+                    <div id="aiLoading" class="ai-loading hidden">
+                        <div class="loader-ring"></div>
+                        <div>
+                            <h3>PROCESSING VISUAL DATA</h3>
+                            <p>Waiting for neural analysis response...</p>
+                        </div>
+                    </div>
+
+                    <div id="aiResult" class="ai-result hidden">
+                        <div class="result-block"><span class="result-index">01</span>
+                            <div>
+                                <h4>IMAGE DESCRIPTION</h4>
+                                <p id="descriptionResult"></p>
+                            </div>
+                        </div>
+                        <div class="result-block"><span class="result-index">02</span>
+                            <div>
+                                <h4>OBJECT RECOGNITION</h4>
+                                <p id="objectsResult"></p>
+                            </div>
+                        </div>
+                        <div class="result-block"><span class="result-index">03</span>
+                            <div>
+                                <h4>COLOR INTELLIGENCE</h4>
+                                <p id="colorsResult"></p>
+                            </div>
+                        </div>
+                        <div class="result-block"><span class="result-index">04</span>
+                            <div>
+                                <h4>NEURAL SUMMARY</h4>
+                                <p id="summaryResult"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="aiError" class="error-text ai-error" role="alert"></div>
+                </section>
+            </section>
+
+            <section id="historyView" class="history-view hidden">
+                <span class="section-code">05 / ARCHIVE</span>
+                <h1>SCAN <span>HISTORY</span></h1>
+                <p>Previously analyzed images in this browser session.</p>
+                <div id="historyList" class="history-list"></div>
+                <div id="historyEmpty" class="ai-empty history-empty">
+                    <div class="ai-emblem">◷</div>
+                    <h3>NO SCAN RECORDS</h3>
+                    <p>Your completed scans will appear here.</p>
+                    <button id="backToAnalyzer" class="primary-btn">RETURN TO SCANNER ↗</button>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <span>NEURA <b>VISION SYSTEMS</b></span>
+                <span>DESIGNED FOR INTELLIGENCE <i>✳</i></span>
+            </footer>
+        </main>
+    </div>
+
+    <div id="toast" class="toast" role="status"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
